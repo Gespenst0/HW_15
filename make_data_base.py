@@ -1,13 +1,17 @@
 import sqlite3
 
 data = []
+
+
 def fill_animals_task():
     for i in range(len(data)):
         query = f"""
-            INSERT INTO animals_task (age_upon_outcome, animal_id, name, appearance_id, date_of_birth, outcome_program_id, outcome_date_id) 
+            INSERT INTO animals_task (age_upon_outcome, animal_id, name, appearance_id, 
+                                    date_of_birth, outcome_program_id, outcome_date_id) 
             VALUES ('{data[i][0]}', '{data[i][1]}', "{data[i][3]}", '{i+1}', '{data[i][7]}', '{i+1}', '{i+1}')
             """
         cursor.execute(query)
+
 
 def fill_animal_breeds():
     for i in range(len(data)):
@@ -52,7 +56,6 @@ def fill_outcome_date():
         cursor.execute(query)
 
 
-
 with sqlite3.connect("animal1.db") as connection:
     cursor = connection.cursor()
     query = """
@@ -81,6 +84,3 @@ with sqlite3.connect("animal1.db") as connection:
     fill_animal_types()
     fill_animals_task()
     fill_animal_breeds()
-
-
-
